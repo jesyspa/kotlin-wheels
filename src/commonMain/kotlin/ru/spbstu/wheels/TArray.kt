@@ -1,4 +1,4 @@
-@file: Suppress(Warnings.NOTHING_TO_INLINE)
+@file: Suppress("NOTHING_TO_INLINE", "UNCHECKED_CAST")
 
 package ru.spbstu.wheels
 

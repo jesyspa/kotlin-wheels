@@ -100,6 +100,7 @@ internal abstract class AutoProductVisitor: ProductVisitor() {
     protected val superProxy: ProductVisitor = SuperProxy()
 }
 
+/*
 inline fun <reified T> Product.acceptProductVisitor(crossinline visitorBody: ProductVisitor.(T) -> Unit) {
     val visitor = object: AutoProductVisitor() {
         override fun default(any: Any?) {
@@ -115,3 +116,5 @@ inline fun <reified T> Product.acceptProductVisitor(crossinline visitorBody: Pro
 
     visitor.visitProduct(this)
 }
+
+ */

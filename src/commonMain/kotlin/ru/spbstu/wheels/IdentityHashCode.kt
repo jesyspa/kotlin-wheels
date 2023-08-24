@@ -1,6 +1,5 @@
 package ru.spbstu.wheels
 
-expect fun identityHashCode(value: Any?): Int
 
 class IdentityBox(val value: Any?) {
     override fun hashCode(): Int = identityHashCode(value)
