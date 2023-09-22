@@ -1,4 +1,3 @@
-@file:OptIn(ExperimentalContracts::class)
 package ru.spbstu.wheels
 
 import kotlin.contracts.ExperimentalContracts
@@ -8,6 +7,7 @@ import kotlin.contracts.contract
 object Break : NoStackThrowable("break")
 object Continue : NoStackThrowable("continue")
 
+@OptIn(ExperimentalContracts::class)
 object BreakableContext {
     inline val break_: Nothing get() = throw Break
     inline val continue_: Nothing get() = throw Continue
@@ -31,6 +31,7 @@ object BreakableContext {
     }
 }
 
+@OptIn(ExperimentalContracts::class)
 inline fun <T> Iterable<T>.forEachB(body: BreakableContext.(T) -> Unit) {
     contract { callsInPlace(body) }
     BreakableContext.loop {
@@ -40,6 +41,7 @@ inline fun <T> Iterable<T>.forEachB(body: BreakableContext.(T) -> Unit) {
     }
 }
 
+@OptIn(ExperimentalContracts::class)
 inline fun <T> Sequence<T>.forEachB(body: BreakableContext.(T) -> Unit) {
     contract { callsInPlace(body) }
     BreakableContext.loop {
@@ -49,6 +51,7 @@ inline fun <T> Sequence<T>.forEachB(body: BreakableContext.(T) -> Unit) {
     }
 }
 
+@OptIn(ExperimentalContracts::class)
 inline fun <T> Iterable<T>.forEachIndexedB(body: BreakableContext.(Int, T) -> Unit) {
     contract { callsInPlace(body) }
     BreakableContext.loop {
@@ -58,6 +61,7 @@ inline fun <T> Iterable<T>.forEachIndexedB(body: BreakableContext.(Int, T) -> Un
     }
 }
 
+@OptIn(ExperimentalContracts::class)
 inline fun <T> Sequence<T>.forEachIndexedB(body: BreakableContext.(Int, T) -> Unit) {
     contract { callsInPlace(body) }
     BreakableContext.loop {
@@ -68,6 +72,7 @@ inline fun <T> Sequence<T>.forEachIndexedB(body: BreakableContext.(Int, T) -> Un
 }
 
 
+@OptIn(ExperimentalContracts::class)
 inline fun repeatB(times: Int, body: BreakableContext.(Int) -> Unit) {
     contract { callsInPlace(body) }
     BreakableContext.loop {
@@ -77,6 +82,7 @@ inline fun repeatB(times: Int, body: BreakableContext.(Int) -> Unit) {
     }
 }
 
+@OptIn(ExperimentalContracts::class)
 inline fun <T, U, C: MutableCollection<U>> Iterable<T>.mapOrBreakTo(to: C, body: BreakableContext.(T) -> U): C {
     contract { callsInPlace(body) }
     BreakableContext.loop {
@@ -90,6 +96,7 @@ inline fun <T, U, C: MutableCollection<U>> Iterable<T>.mapOrBreakTo(to: C, body:
 inline fun <T, U> Iterable<T>.mapOrBreak(body: BreakableContext.(T) -> U): List<U> =
         mapOrBreakTo(mutableListOf(), body)
 
+@OptIn(ExperimentalContracts::class)
 inline fun <T, U, C: MutableCollection<U>> Sequence<T>.mapOrBreakTo(to: C, body: BreakableContext.(T) -> U): C {
     contract { callsInPlace(body) }
     BreakableContext.loop {
@@ -108,6 +115,7 @@ inline fun <T, U> Sequence<T>.mapOrBreak(crossinline body: BreakableContext.(T) 
     }
 }
 
+@OptIn(ExperimentalContracts::class)
 inline fun <T, U, C: MutableCollection<U>> Iterable<T>.mapIndexedOrBreakTo(to: C, body: BreakableContext.(Int, T) -> U): C {
     contract { callsInPlace(body) }
     BreakableContext.loop {

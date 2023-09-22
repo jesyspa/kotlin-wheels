@@ -14,7 +14,8 @@ plugins {
 }
 
 formver {
-    setUnsupportedFeatureBehaviour("assume_unreachable")
+    unsupportedFeatureBehaviour("assume_unreachable")
+    conversionTargetsSelection("all_targets")
 }
 
 repositories {

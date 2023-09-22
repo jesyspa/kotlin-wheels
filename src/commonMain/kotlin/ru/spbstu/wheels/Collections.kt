@@ -103,8 +103,6 @@ fun <T> MutableList<T>.assign(other: Collection<T>) {
         this[i] = iter.next()
         ++i
     }
-    // native has a buggy ensureCapacity implementation
-    if (currentPlatform != Platform.NATIVE && this is ArrayList<*>) ensureCapacity(other.size)
     while (other.size > size) add(iter.next())
 }
 

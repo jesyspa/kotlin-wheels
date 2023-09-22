@@ -1,11 +1,11 @@
 package ru.spbstu.wheels
 
-actual open class NoStackThrowable
-actual constructor(message: String?, cause: Throwable?) :
+open class NoStackThrowable
+constructor(message: String?, cause: Throwable?) :
         Throwable(message, cause, false, false) {
-    actual constructor() : this(null, null)
-    actual constructor(message: String) : this(message, null)
-    actual constructor(cause: Throwable) : this(cause.message, cause)
+    constructor() : this(null, null)
+    constructor(message: String) : this(message, null)
+    constructor(cause: Throwable) : this(cause.message, cause)
 
     override fun fillInStackTrace(): NoStackThrowable = this
 }
